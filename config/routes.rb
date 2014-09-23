@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/logout' => 'sessions#destroy', as: :logout
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
