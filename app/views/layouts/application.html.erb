@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header class='navbar navbar-inverse' role='navigation'>
+<header class='navbar navbar-default' role='navigation'>
   <div class='container'>
     <div class='navbar-header'>
       <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
@@ -21,6 +21,8 @@
     <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
       <ul class='nav navbar-nav navbar-right'>
         <% if logged_in? %>
+          <li><%= image_tag(current_user.image_url, size: "48x48", align: 'bottom') %></li>
+          <li><%= link_to "#{current_user.nickname}" %></li>
           <li><%= link_to 'ログアウト', logout_path %></li>
         <% else %>
           <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
