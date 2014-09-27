@@ -31,6 +31,9 @@ gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+# redis
+gem 'redis'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -39,6 +42,8 @@ end
 group :development, :test do
   gem 'sqlite3', '1.3.9'
   gem 'rspec-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do

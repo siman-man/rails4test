@@ -1,3 +1,7 @@
 <p>
-  こんにちわ世界
+  <% if logged_in? %>
+    <%= current_user.nickname %>さんようこそ。
+  <% else %>
+    こんにちわ世界
+  <% end %>
 </p>
