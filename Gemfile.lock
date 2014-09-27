@@ -110,6 +110,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    redis (3.1.0)
     rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.1)
@@ -173,6 +174,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.6)
   rails_12factor (= 0.0.2)
+  redis
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
