@@ -1,7 +1,8 @@
-<p>
-  <% if logged_in? %>
-    <%= current_user.nickname %>さんようこそ。
-  <% else %>
-    こんにちわ世界
-  <% end %>
-</p>
+<div class='row'>
+  <div class="col-sm-8 main" id='mainscreen'>
+    <%= render partial: 'tvscreen' %>
+  </div>
+  <div class="col-sm-4 slidebar" id='subscreen'>
+    <%= render partial: 'tvscreen' %>
+  </div>
+</div>

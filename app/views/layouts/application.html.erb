@@ -13,11 +13,11 @@
       <%= link_to 'ツイ生', root_path, class: 'navbar-brand' %>
     </div>
     <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-      <ul class='nav navbar-nav navbar-left'>
+      <ul class='nav navbar-nav navbar-left' id='search_box'>
         <li><input type="text" class="form-control"></li>
         <li><button class="btn btn-default" type="button">Go!</button></li>
       </ul>
-    <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+
       <ul class='nav navbar-nav navbar-right'>
         <% if logged_in? %>
           <li><%= image_tag(current_user.image_url, size: "48x48", align: 'bottom') %></li>
@@ -27,10 +27,11 @@
           <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
         <% end %>
       </ul>
+    </div>
   </div>
 </header>
 
-<div class="container">
+<div class="container-fluid">
   <% if flash[:notice] %>
     <div class='alert alert-success'>
       <%= flash[:notice] %>

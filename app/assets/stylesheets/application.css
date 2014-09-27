@@ -15,3 +15,15 @@
  *= require bootstrap-theme.min
  *= require_self
  */
+
+#search_box {
+  margin: 10px; 
+}
+
+#mainscreen {
+  background-color: #888;
+}
+
+#subscreen {
+  background-color: #a03;
+}
