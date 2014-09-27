@@ -42,6 +42,8 @@ end
 group :development, :test do
   gem 'sqlite3', '1.3.9'
   gem 'rspec-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do
