@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'screen/index'
+
   get 'static_pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   get '/auth/:provider/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
+  get '/screen' => 'screen#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

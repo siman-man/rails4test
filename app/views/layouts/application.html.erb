@@ -14,17 +14,19 @@
     </div>
     <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
       <ul class='nav navbar-nav navbar-left' id='search_box'>
-        <li><input type="text" class="form-control"></li>
-        <li><button class="btn btn-default" type="button">Go!</button></li>
+        <%= form_tag('screen', class: 'form-inline', role: 'form', method: :get) do %>
+          <%= content_tag(:div, text_field(:screen, :tag_name, { class: 'form-control' }), class: 'form-group') %>
+          <%= submit_tag('Go!', { class: 'btn btn-default' }) %>
+        <% end %>
       </ul>
 
       <ul class='nav navbar-nav navbar-right'>
         <% if logged_in? %>
-          <li><%= image_tag(current_user.image_url, size: "48x48", align: 'bottom') %></li>
-          <li><%= link_to "#{current_user.nickname}" %></li>
-          <li><%= link_to 'ログアウト', logout_path %></li>
+          <%= content_tag(:li, image_tag(current_user.image_url, size: "48x48", align: 'bottom')) %>
+          <%= content_tag(:li, link_to("#{current_user.nickname}",'#')) %>
+          <%= content_tag(:li, link_to('ログアウト', logout_path)) %>
         <% else %>
-          <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
+          <%= content_tag(:li, link_to('Twitterでログイン', '/auth/twitter')) %>
         <% end %>
       </ul>
     </div>
@@ -33,14 +35,10 @@
 
 <div class="container-fluid">
   <% if flash[:notice] %>
-    <div class='alert alert-success'>
-      <%= flash[:notice] %>
-    </div>
+    <%= content_tag(:div, flash[:notice], class: 'alert alert-success') %>
   <% end %>
   <% if flash[:alert] %>
-    <div class='alert alert-danger'>
-      <%= flash[:alert] %>
-    </div>
+    <%= content_tag(:div, flash[:alert], class: 'alert alert-danger') %>
   <% end %>
   <%= yield %>
 </div>
