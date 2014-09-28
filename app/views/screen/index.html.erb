@@ -1,9 +1,3 @@
-<ul id='screen_area'>
-</ul>
-
-<input id='comment' type='text'>
-<input class='button' id='send' type='button' value='send'>
-
 <script>
   var ws_rails = new WebSocketRails('localhost:3000/websocket');
 
@@ -21,3 +15,12 @@
     ws_rails.trigger('websocket_screen', comment);
   };
 </script>
+
+<div class='row'>
+  <div class="col-sm-8 main" id='mainscreen'>
+    <%= render partial: 'tvscreen' %>
+  </div>
+  <div class="col-sm-4 slidebar" id='subscreen'>
+    <%= render partial: 'twscreen' %>
+  </div>
+</div>

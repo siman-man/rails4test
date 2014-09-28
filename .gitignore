@@ -6,6 +6,7 @@
 
 *.rbc
 capybara-*.html
+.DS_Store
 .rspec
 .env
 /log
