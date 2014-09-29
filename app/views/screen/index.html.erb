@@ -15,7 +15,6 @@ $(window).load(function(){
 
   console.log('connect =>', room_name);
 
-
   dispatcher.on_error = function(data) {
     return console.log('on error');
   };
@@ -25,8 +24,9 @@ $(window).load(function(){
   };
 
   // bind to a channel event
-  channel.bind(room_name + '_count_update', function(data) {
-    console.log('channel event received: ' + data);
+  channel.bind(room_name + '_count_update', function(user_count) {
+    console.log('channel event received: ' + user_count);
+    $("#watchers").text(user_count);
   });
 
   $(window).on('beforeunload', function() {
