@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'channels/index'
+
   get 'screen/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
   get '/screen' => 'screen#index', as: :screen
+  get '/channels' => 'channels#index', as: :channel_list
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

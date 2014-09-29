@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Rails4test</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,6 +23,7 @@
 
       <ul class='nav navbar-nav navbar-right'>
         <% if logged_in? %>
+          <%= content_tag(:li, link_to('チャンネル一覧', channel_list_path)) %>
           <%= content_tag(:li, image_tag(current_user.image_url, size: "48x48", align: 'bottom')) %>
           <%= content_tag(:li, link_to("#{current_user.nickname}",'#')) %>
           <%= content_tag(:li, link_to('ログアウト', logout_path)) %>

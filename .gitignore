@@ -7,7 +7,9 @@
 *.rbc
 capybara-*.html
 .DS_Store
+.rdb
 .rspec
+dump.rdb
 .env
 /log
 /tmp

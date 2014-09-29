@@ -1,26 +1,41 @@
-<script>
-  var ws_rails = new WebSocketRails('localhost:3000/websocket');
-
-  // メッセージ受信時の処理
-  ws_rails.bind('websocket_screen', function(message){
-    var message_li = document.createElement('li');
-    message_li.textContent = message;
-
-    document.getElementById('screen_area').appendChild(message_li);
-  });
-
-  document.getElementById('send').onclick = function(){
-    var comment = document.getElementById('comment').value;
-
-    ws_rails.trigger('websocket_screen', comment);
-  };
-</script>
-
 <div class='row'>
   <div class="col-sm-8 main" id='mainscreen'>
     <%= render partial: 'tvscreen' %>
   </div>
   <div class="col-sm-4 slidebar" id='subscreen'>
-    <%= render partial: 'twscreen' %>
+    <%= render partial: 'timeline' %>
   </div>
 </div>
+
+<script>
+$(window).load(function(){
+  var dispatcher = new WebSocketRails('localhost:3000/websocket'),
+      room_name = "room_<%= @tag_name %>";
+
+  console.log('connect =>', room_name);
+
+  var channel = dispatcher.subscribe(room_name),
+      conn = { };
+
+
+  dispatcher.on_error = function(data) {
+    return console.log('on error');
+  };
+
+  dispatcher.on_close = function(data) {
+    return console.log('on close');
+  };
+
+  // bind to a channel event
+  channel.bind('hello', function(data) {
+    console.log('channel event received: ' + data);
+  });
+
+  $(window).on('beforeunload', function() {
+    dispatcher.trigger('watcher_leave', $.extend( conn, <%= @data.to_json.html_safe %>));
+  });
+  console.log( $.extend( conn, <%= @data.to_json.html_safe %>));
+
+  dispatcher.trigger('watcher_enter', $.extend( conn, <%= @data.to_json.html_safe %>));
+});
+</script>

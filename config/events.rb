@@ -14,4 +14,8 @@ WebsocketRails::EventMap.describe do
   
   # websocket_chatイベントのマッピング
   subscribe :websocket_screen, to: WebsocketScreenController, with_method: :message_recieve
+  subscribe :client_connected, to: WebsocketScreenController, with_method: :client_connected
+  subscribe :client_disconnected, to: WebsocketScreenController, with_method: :client_disconnected
+  subscribe :watcher_enter, to: WebsocketScreenController, with_method: :watcher_enter
+  subscribe :watcher_leave, to: WebsocketScreenController, with_method: :watcher_leave
 end
