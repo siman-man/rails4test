@@ -9,7 +9,7 @@
 
 <script>
 $(window).load(function(){
-  var dispatcher = new WebSocketRails('http://twinama.herokuapp.com/websocket'),
+  var dispatcher = new WebSocketRails('twinama.herokuapp.com/websocket'),
       room_name = "<%= @user_info[:room_name] %>",
       channel = dispatcher.subscribe(room_name);
 
