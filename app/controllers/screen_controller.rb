@@ -1,8 +1,8 @@
 class ScreenController < ApplicationController
   def index
-    @tag_name = params["screen"]["tag_name"]
-    @data = { room_name: @tag_name, x: 1, y: 2, z: 'hello' }
+    room_name = 'room_' + params["screen"]["tag_name"]
+    user_name = logged_in? ? current_user.nickname : 'Guest'
 
-    REDIS.incr @tag_name
+    @user_info = { user_name: user_name, room_name: room_name }
   end
 end

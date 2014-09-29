@@ -10,12 +10,10 @@
 <script>
 $(window).load(function(){
   var dispatcher = new WebSocketRails('localhost:3000/websocket'),
-      room_name = "room_<%= @tag_name %>";
+      room_name = "<%= @user_info[:room_name] %>",
+      channel = dispatcher.subscribe(room_name);
 
   console.log('connect =>', room_name);
-
-  var channel = dispatcher.subscribe(room_name),
-      conn = { };
 
 
   dispatcher.on_error = function(data) {
@@ -27,15 +25,14 @@ $(window).load(function(){
   };
 
   // bind to a channel event
-  channel.bind('hello', function(data) {
+  channel.bind(room_name + '_count_update', function(data) {
     console.log('channel event received: ' + data);
   });
 
   $(window).on('beforeunload', function() {
-    dispatcher.trigger('watcher_leave', $.extend( conn, <%= @data.to_json.html_safe %>));
+    dispatcher.trigger('watcher_leave', <%= @user_info.to_json.html_safe %>);
   });
-  console.log( $.extend( conn, <%= @data.to_json.html_safe %>));
 
-  dispatcher.trigger('watcher_enter', $.extend( conn, <%= @data.to_json.html_safe %>));
+  dispatcher.trigger('watcher_enter', <%= @user_info.to_json.html_safe %>);
 });
 </script>
