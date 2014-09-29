@@ -5,3 +5,5 @@ if ENV["REDISTOGO_URL"] != nil
 else
     REDIS = Redis.new(host: '127.0.0.1', port: 6379, driver: :hiredis)
 end
+
+REDIS.flushall
