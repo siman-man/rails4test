@@ -37,6 +37,9 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 # websocket-rails
 gem 'websocket-rails'
 
+# gon
+gem 'gon'
+
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

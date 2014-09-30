@@ -65,6 +65,11 @@ GEM
     faye-websocket (0.7.4)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
+    gon (5.2.0)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     hashie (3.3.1)
     hike (1.2.3)
     hiredis (0.5.2)
@@ -128,6 +133,7 @@ GEM
     redis (3.1.0)
     redis-objects (1.0.0)
       redis (>= 3.0.2)
+    request_store (1.1.0)
     rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.1)
@@ -196,6 +202,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   dotenv-rails
+  gon
   heroku_secrets!
   jbuilder (~> 2.0)
   jquery-rails
