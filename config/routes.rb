@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
   get '/screen' => 'screen#index', as: :screen
+  post '/stream' => 'screen#stream', as: :stream
   get '/channels' => 'channels#index', as: :channel_list
+  get '/keywords' => 'channels#keyword', as: :keywords
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

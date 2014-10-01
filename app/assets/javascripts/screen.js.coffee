@@ -8,7 +8,7 @@ $ ->
   if gon.environment == "production"
     dispatcher = new WebSocketRails('twinama.herokuapp.com/websocket')
   else
-    dispatcher = new WebSocketRails('localhost:3000/websocket')
+    dispatcher = new WebSocketRails(location.host + '/websocket')
 
   room_name = gon.user_info.room_name
   channel = dispatcher.subscribe(room_name)
