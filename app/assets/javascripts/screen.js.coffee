@@ -3,8 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  console.log('hello world')
-
   if gon.environment == "production"
     dispatcher = new WebSocketRails('twinama.herokuapp.com/websocket')
   else
@@ -19,7 +17,25 @@ $ ->
     $("#watchers").text(user_count)
   ));
 
+  channel.bind(room_name + '_timeline_update', (tweet_info) -> (
+    text = """
+      <li class="timeline-tweet">
+        <div class="timeline-tweet-image">
+          <img height="48" src="#{tweet_info.image_url}" width="48" />
+        </div>
+        <div class="timeline-tweet-text">
+          #{tweet_info.text}
+        </div>
+      </li>
+"""
+
+    $("#tweet_list").prepend(text)
+    TvScreen.add_text_object(tweet_info);
+    console.log('channel event received: ' + tweet_info)
+  ));
+
   $(window).on('beforeunload', -> (
+    createjs.Ticker.removeEventListener("tick");
     dispatcher.trigger('watcher_leave', gon.user_info )
     return undefined
   ));

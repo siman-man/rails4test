@@ -6,3 +6,12 @@
     <%= render partial: 'timeline' %>
   </div>
 </div>
+
+<%= javascript_include_tag 'createjs-2013.12.12.min' %>
+<%= javascript_include_tag 'tvscreen' %>
+
+<script>
+  $(document).ready(function(){
+    TvScreen.init();
+  });
+</script>

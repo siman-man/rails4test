@@ -10,6 +10,44 @@
 
 #subscreen {
   height: 550px;
-  background-color: #a03;
+  background-color: #fff;
   padding: 10px;
+  overflow-y: scroll;
+}
+
+#tvscreen {
+  background-color: #000;
+}
+
+
+$picture_size: 50px;
+
+.timeline {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none; 
+  min-height: 500px;
+
+  .timeline-tweet {
+    height: 70px;
+  }
+
+  .timeline-tweet-image {
+    float: left;
+    width: $picture_size;
+    height: $picture_size;
+    border: solid 1px; 
+    margin-top: 10px;
+  }
+
+  .timeline-tweet-text {
+    font-size: 12px;
+    margin-left: $picture_size + 10px;
+  }
+
+  div {
+    width: 330px;
+    text-align: left;
+    word-wrap: break-word;
+  }
 }

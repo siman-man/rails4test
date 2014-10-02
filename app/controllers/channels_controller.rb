@@ -9,7 +9,7 @@ class ChannelsController < ApplicationController
   end
 
   def keyword
-    keywords = REDIS.SMEMBERS('active_room_list').map{|key| key.gsub!(/^room_/,'') }
+    keywords = REDIS.SMEMBERS('active_room_list').map{|key| '#' + key }
 
     respond_to do |format|
       format.json { render json: keywords.to_json }
